@@ -4,6 +4,7 @@ from flask_wtf.csrf import CSRFProtect
 from config import DevelopmentConfig
 from models import db, Alumnos
 import forms  
+
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 db.init_app(app)
@@ -35,4 +36,7 @@ def usuario():
                            nom=nom,apa=apa,ama=ama,edad=edad,email=email)
 
 if __name__ == '__main__':
-	app.run(debug=True)
+    csrf.init_app(app)
+    with app.app_context():
+        db.create_all()
+    app.run()
