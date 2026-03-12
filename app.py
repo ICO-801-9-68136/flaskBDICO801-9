@@ -4,16 +4,19 @@ from flask_wtf.csrf import CSRFProtect
 from config import DevelopmentConfig
 from models import db, Alumnos
 import forms  
-
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 db.init_app(app)
 csrf = CSRFProtect(app)
 
-@app.route("/")
+@app.route("/",methods=["GET","POST"])
 @app.route("/index")
 def index():
-	return render_template("index.html")
+    create_alumno =forms.UserForm(request.form)
+    #select * alumnos alumnos
+    alumno=Alumnos.query.all()
+    return render_template("index.html",form=create_alumno,alumno=alumno)
+
 
 @app.route("/usuarios",methods=["GET","POST"])
 def usuario():
