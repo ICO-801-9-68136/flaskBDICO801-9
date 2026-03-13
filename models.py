@@ -5,9 +5,9 @@ db = SQLAlchemy()
 class Alumnos(db.Model):
     __tablename__ = 'alumnos'
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(50))
+    nombre = db.Column(db.String(250))
     apaterno = db.Column(db.String(50))
-    amaterno = db.Column(db.String(50))
+    amaterno = db.Column(db.String(250))
     edad = db.Column(db.Integer)
     email = db.Column(db.String(50))
 
