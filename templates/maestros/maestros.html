@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block container %}
+<div class="container mx-auto mt-8 px-4">
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-green-700">Registrar maestro</h2>
+
+            <form method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Matrícula</label>
+                    <input type="number" name="matricula" value="{{ form.matricula.data or '' }}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+                    <input type="text" name="nombre" value="{{ form.nombre.data or '' }}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Apellidos</label>
+                    <input type="text" name="apellidos" value="{{ form.apellidos.data or '' }}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Especialidad</label>
+                    <input type="text" name="especialidad" value="{{ form.especialidad.data or '' }}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
+                    <input type="email" name="email" value="{{ form.email.data or '' }}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+                </div>
+
+                <button type="submit"
+                    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                    Guardar maestro
+                </button>
+            </form>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-green-700">Lista de maestros</h2>
+
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3">Matrícula</th>
+                            <th class="px-6 py-3">Nombre</th>
+                            <th class="px-6 py-3">Apellidos</th>
+                            <th class="px-6 py-3">Especialidad</th>
+                            <th class="px-6 py-3">Correo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for maestro in maestros %}
+                        <tr class="bg-white border-b">
+                            <td class="px-6 py-4">{{ maestro.matricula }}</td>
+                            <td class="px-6 py-4">{{ maestro.nombre }}</td>
+                            <td class="px-6 py-4">{{ maestro.apellidos }}</td>
+                            <td class="px-6 py-4">{{ maestro.especialidad }}</td>
+                            <td class="px-6 py-4">{{ maestro.email }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
