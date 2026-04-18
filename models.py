@@ -77,6 +77,9 @@ class Inscripcion(db.Model):
         server_default=db.func.now()
     )
 
+    alumno = db.relationship('Alumnos', backref='inscripciones_detalle')
+    curso = db.relationship('Curso', backref='inscripciones_detalle')
+
     __table_args__ = (
         db.UniqueConstraint('alumno_id', 'curso_id', name='uq_alumno_curso'),
     )
