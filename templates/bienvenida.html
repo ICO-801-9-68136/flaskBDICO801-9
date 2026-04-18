@@ -1,17 +1,27 @@
 {% extends "layout.html" %}
 
 {% block container %}
-<div class="bg-white shadow-lg rounded-2xl p-10 text-center">
-    <h1 class="text-4xl font-bold text-blue-700 mb-4">Bienvenido al Sistema Escolar</h1>
-    <p class="text-gray-700 text-lg mb-6">
-        Desde la barra de navegación puedes administrar alumnos, maestros, cursos,
-        realizar inscripciones y ejecutar las consultas solicitadas.
-    </p>
+<div style="margin-top: 140px; padding: 20px;">
+    <div style="max-width: 1000px; margin: 0 auto; background: white; border: 1px solid #ddd; border-radius: 18px; padding: 40px 30px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
 
-    <div class="grid md:grid-cols-3 gap-4 mt-8">
-        <a href="{{ url_for('alumnos') }}" class="bg-blue-600 text-white p-4 rounded-xl hover:bg-blue-700">Ir a Alumnos</a>
-        <a href="{{ url_for('maestros') }}" class="bg-green-600 text-white p-4 rounded-xl hover:bg-green-700">Ir a Maestros</a>
-        <a href="{{ url_for('cursos') }}" class="bg-purple-600 text-white p-4 rounded-xl hover:bg-purple-700">Ir a Cursos</a>
+        <h1 style="font-size: 42px; font-weight: bold; color: #1f2937; margin-bottom: 25px;">
+            Bienvenido al Sistema del Colegio Guanajuato
+        </h1>
+
+        <p style="font-size: 24px; line-height: 1.8; color: #4b5563; max-width: 850px; margin: 0 auto 35px auto;">
+            Este sistema escolar del Colegio Guanajuato ha sido diseñado para facilitar la
+            administración y consulta de la información académica de manera ordenada, rápida
+            y segura. Desde esta plataforma podrás gestionar los registros de alumnos y maestros,
+            mantener un mejor control de los datos y trabajar de forma más eficiente dentro del
+            entorno escolar.
+        </p>
+
+        <img
+            src="{{ url_for('static', filename='img/logo_gto.png') }}"
+            alt="Escudo Colegio Guanajuato"
+            style="display: block; margin: 0 auto; width: 380px; max-width: 100%; height: auto;"
+        >
+
     </div>
 </div>
 {% endblock %}
